@@ -1,0 +1,13 @@
+[package]
+name = "robot-hat-rs"
+version = "0.0.1"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.*"
+rppal = "0.15.*"
+
+[profile.dev]
+opt-level = 1
+[profile.dev.package."*"]
+opt-level = 3
