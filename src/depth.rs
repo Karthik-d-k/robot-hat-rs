@@ -1,26 +1,33 @@
+//! Ultrasonic module implementation
+
 use std::thread::sleep;
 use std::time::{Duration, Instant};
 
-use anyhow::Result;
-use rppal::gpio::{Gpio, InputPin, OutputPin};
+use anyhow::{Context, Result};
+use rppal::gpio::{InputPin, OutputPin};
 
-// ultrasonic pins
-const TRIG_PIN: u8 = 27; // D2 (robot-hat)
-const ECHO_PIN: u8 = 22; // D3 (robot-hat)
+use crate::pin::{PinType, RHPin};
 
+/// Ultrasonic ranging sensor
 pub struct Ultrasonic {
     trig: OutputPin,
     echo: InputPin,
 }
 
 impl Ultrasonic {
-    pub fn new() -> Result<Self> {
-        let trig = Gpio::new()?.get(TRIG_PIN)?.into_output();
-        let echo = Gpio::new()?.get(ECHO_PIN)?.into_input();
+    /// Create ultrasonic ranging sensor using trigger and echo pins with [`PinType`]  *(D0-D16)*
+    pub fn new(trig_pin: PinType, echo_pin: PinType) -> Result<Self> {
+        let trig_pin = RHPin::new(trig_pin)
+            .with_context(|| format!("Creating trigger pin using {:?} failed", trig_pin))?;
+        let echo_pin = RHPin::new(echo_pin)
+            .with_context(|| format!("Creating echo pin using {:?} failed", echo_pin))?;
+        let trig = trig_pin.gpio_pin.into_output();
+        let echo = echo_pin.gpio_pin.into_input();
 
         Ok(Ultrasonic { trig, echo })
     }
 
+    /// Read distance values in `cm`
     pub fn read(&mut self) -> u64 {
         // Set trigger pin low for 5 us
         self.trig.set_low();
