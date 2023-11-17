@@ -11,3 +11,7 @@ rppal = "0.15.*"
 opt-level = 1
 [profile.dev.package."*"]
 opt-level = 3
+
+[lints.rust]
+unsafe_code = "forbid"
+missing_docs = "warn"

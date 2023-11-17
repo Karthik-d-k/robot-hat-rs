@@ -14,30 +14,55 @@ fn check_board_type() -> Result<bool> {
 /// An explicit allowable types for [`RHPin`]
 #[derive(Copy, Clone, Debug)]
 pub enum PinType {
+    /// The Digital pin 0
     D0,
+    /// The Digital pin 0
     D1,
+    /// The Digital pin 0
     D2,
+    /// The Digital pin 0
     D3,
+    /// The Digital pin 0
     D4,
+    /// The Digital pin 0
     D5,
+    /// The Digital pin 0
     D6,
+    /// The Digital pin 0
     D7,
+    /// The Digital pin 0
     D8,
+    /// The Digital pin 0
     D9,
+    /// The Digital pin 0
     D10,
+    /// The Digital pin 0
     D11,
+    /// The Digital pin 0
     D12,
+    /// The Digital pin 0
     D13,
+    /// The Digital pin 0
     D14,
+    /// The Digital pin 0
     D15,
+    /// The Digital pin 0
     D16,
+    /// The Digital pin 0
     SW,
+    /// The Digital pin 0
     User,
+    /// The Digital pin 0
     Led,
+    /// The Digital pin 0
     BoardType,
+    /// The Digital pin 0
     Rst,
+    /// The Digital pin 0
     BleInt,
+    /// The Digital pin 0
     BleRst,
+    /// The Digital pin 0
     McuRst,
 }
 
@@ -100,6 +125,7 @@ impl PinType {
 /// A robot-hat pin
 #[derive(Debug)]
 pub struct RHPin {
+    /// A [`gpio::Pin`] from [`rppal`] crate
     pub gpio_pin: gpio::Pin,
 }
 
