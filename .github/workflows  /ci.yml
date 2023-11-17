@@ -2,11 +2,9 @@ name: CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
   pull_request:
-    branches:
-      - main
+    branches: [ "main" ]
 
 env:
   CARGO_TERM_COLOR: always
@@ -28,7 +26,9 @@ jobs:
         - target: "aarch64-unknown-linux-musl"
           linker: "aarch64-linux-gnu-gcc"
           dependencies: "crossbuild-essential-arm64"
+
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v3
     - name: Install target
