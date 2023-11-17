@@ -2,6 +2,14 @@
 name = "robot-hat-rs"
 version = "0.0.1"
 edition = "2021"
+authors = ["Karthik D K <karthikdk1998@gmail.com>"]
+categories = ["embedded"]
+keywords = ["raspberry", "pi", "robot-hat"]
+description = "The unofficial Rust implementation of robot-hat Python Library."
+homepage = "https://docs.rs/robot-hat-rs"
+documentation = "https://docs.rs/robot-hat-rs"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/Karthik-d-k/robot-hat-rs"
 
 [dependencies]
 anyhow = "1.*"
