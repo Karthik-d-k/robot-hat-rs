@@ -16,53 +16,53 @@ fn check_board_type() -> Result<bool> {
 pub enum PinType {
     /// The Digital pin 0
     D0,
-    /// The Digital pin 0
+    /// The Digital pin 1
     D1,
-    /// The Digital pin 0
+    /// The Digital pin 2
     D2,
-    /// The Digital pin 0
+    /// The Digital pin 3
     D3,
-    /// The Digital pin 0
+    /// The Digital pin 4
     D4,
-    /// The Digital pin 0
+    /// The Digital pin 5
     D5,
-    /// The Digital pin 0
+    /// The Digital pin 6
     D6,
-    /// The Digital pin 0
+    /// The Digital pin 7
     D7,
-    /// The Digital pin 0
+    /// The Digital pin 8
     D8,
-    /// The Digital pin 0
+    /// The Digital pin 9
     D9,
-    /// The Digital pin 0
+    /// The Digital pin 10
     D10,
-    /// The Digital pin 0
+    /// The Digital pin 11
     D11,
-    /// The Digital pin 0
+    /// The Digital pin 12
     D12,
-    /// The Digital pin 0
+    /// The Digital pin 13
     D13,
-    /// The Digital pin 0
+    /// The Digital pin 14
     D14,
-    /// The Digital pin 0
+    /// The Digital pin 15
     D15,
-    /// The Digital pin 0
+    /// The Digital pin 16
     D16,
-    /// The Digital pin 0
+    /// The USR button
     SW,
-    /// The Digital pin 0
+    /// The USR button
     User,
-    /// The Digital pin 0
+    /// The LED on the board
     Led,
-    /// The Digital pin 0
+    /// The board type pin
     BoardType,
-    /// The Digital pin 0
+    /// The Reset pin
     Rst,
-    /// The Digital pin 0
+    /// The Ble interrupt pin ?
     BleInt,
-    /// The Digital pin 0
+    /// The Ble reset pin ?
     BleRst,
-    /// The Digital pin 0
+    /// The MCU reset pin
     McuRst,
 }
 
