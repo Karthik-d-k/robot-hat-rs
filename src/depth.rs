@@ -3,7 +3,7 @@
 use std::thread::sleep;
 use std::time::{Duration, Instant};
 
-use anyhow::{Context, Result};
+use anyhow::{bail, Context, Result};
 use rppal::gpio::{InputPin, OutputPin};
 
 use crate::pin::{PinType, RHPin};
@@ -17,6 +17,20 @@ pub struct Ultrasonic {
 impl Ultrasonic {
     /// Create ultrasonic ranging sensor using trigger and echo pins with [`PinType`]  *(D0-D16)*
     pub fn new(trig_pin: PinType, echo_pin: PinType) -> Result<Self> {
+        // check if digital pins are passed
+        if !trig_pin.is_digital_pin() {
+            bail!(
+                "trig_pin should be one of PinType::D0-D16, but passed {:?}",
+                trig_pin
+            )
+        }
+        if !echo_pin.is_digital_pin() {
+            bail!(
+                "echo_pin should be one of PinType::D0-D16, but passed {:?}",
+                echo_pin
+            )
+        }
+
         let trig_pin = RHPin::new(trig_pin)
             .with_context(|| format!("Creating trigger pin using {:?} failed", trig_pin))?;
         let echo_pin = RHPin::new(echo_pin)

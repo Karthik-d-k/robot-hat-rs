@@ -120,6 +120,21 @@ impl PinType {
             }
         }
     }
+
+    /// checks if `PinType` is any of `PinType::D0-D16`
+    pub fn is_digital_pin(&self) -> bool {
+        !matches!(
+            self,
+            PinType::SW
+                | PinType::User
+                | PinType::Led
+                | PinType::BoardType
+                | PinType::Rst
+                | PinType::BleInt
+                | PinType::BleRst
+                | PinType::McuRst
+        )
+    }
 }
 
 /// A robot-hat pin
