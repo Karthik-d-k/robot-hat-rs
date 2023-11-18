@@ -48,6 +48,34 @@ pub enum PinType {
     D15,
     /// The Digital pin 16
     D16,
+    /// The Pwm pin 0
+    P0,
+    /// The Pwm pin 1
+    P1,
+    /// The Pwm pin 2
+    P2,
+    /// The Pwm pin 3
+    P3,
+    /// The Pwm pin 4
+    P4,
+    /// The Pwm pin 5
+    P5,
+    /// The Pwm pin 6
+    P6,
+    /// The Pwm pin 7
+    P7,
+    /// The Pwm pin 8
+    P8,
+    /// The Pwm pin 9
+    P9,
+    /// The Pwm pin 10
+    P10,
+    /// The Pwm pin 11
+    P11,
+    /// The Pwm pin 12
+    P12,
+    /// The Pwm pin 13
+    P13,
     /// The USR button
     SW,
     /// The USR button
@@ -92,6 +120,20 @@ impl PinType {
             PinType::D14 => 26,
             PinType::D15 => 20,
             PinType::D16 => 21,
+            PinType::P0 => 0,
+            PinType::P1 => 1,
+            PinType::P2 => 2,
+            PinType::P3 => 3,
+            PinType::P4 => 4,
+            PinType::P5 => 5,
+            PinType::P6 => 6,
+            PinType::P7 => 7,
+            PinType::P8 => 8,
+            PinType::P9 => 9,
+            PinType::P10 => 10,
+            PinType::P11 => 11,
+            PinType::P12 => 12,
+            PinType::P13 => 13,
             PinType::SW => {
                 if board_type {
                     19
@@ -121,18 +163,47 @@ impl PinType {
         }
     }
 
-    /// checks if `PinType` is any of `PinType::D0-D16`
+    /// checks if `PinType` is a Digital Pin
     pub fn is_digital_pin(&self) -> bool {
-        !matches!(
+        matches!(
             self,
-            PinType::SW
-                | PinType::User
-                | PinType::Led
-                | PinType::BoardType
-                | PinType::Rst
-                | PinType::BleInt
-                | PinType::BleRst
-                | PinType::McuRst
+            PinType::D0
+                | PinType::D1
+                | PinType::D2
+                | PinType::D3
+                | PinType::D4
+                | PinType::D5
+                | PinType::D6
+                | PinType::D7
+                | PinType::D8
+                | PinType::D9
+                | PinType::D10
+                | PinType::D11
+                | PinType::D12
+                | PinType::D13
+                | PinType::D14
+                | PinType::D15
+                | PinType::D16
+        )
+    }
+    /// checks if `PinType` is a Pwm pin
+    pub fn is_pwm_pin(&self) -> bool {
+        matches!(
+            self,
+            PinType::P0
+                | PinType::P1
+                | PinType::P2
+                | PinType::P3
+                | PinType::P4
+                | PinType::P5
+                | PinType::P6
+                | PinType::P7
+                | PinType::P8
+                | PinType::P9
+                | PinType::P10
+                | PinType::P11
+                | PinType::P12
+                | PinType::P13
         )
     }
 }
