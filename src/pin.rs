@@ -120,20 +120,6 @@ impl PinType {
             PinType::D14 => 26,
             PinType::D15 => 20,
             PinType::D16 => 21,
-            PinType::P0 => 0,
-            PinType::P1 => 1,
-            PinType::P2 => 2,
-            PinType::P3 => 3,
-            PinType::P4 => 4,
-            PinType::P5 => 5,
-            PinType::P6 => 6,
-            PinType::P7 => 7,
-            PinType::P8 => 8,
-            PinType::P9 => 9,
-            PinType::P10 => 10,
-            PinType::P11 => 11,
-            PinType::P12 => 12,
-            PinType::P13 => 13,
             PinType::SW => {
                 if board_type {
                     19
@@ -160,6 +146,7 @@ impl PinType {
                     5
                 }
             }
+            _ => panic!("Cannot find bcm number for {:?}", self),
         }
     }
 
@@ -205,6 +192,30 @@ impl PinType {
                 | PinType::P12
                 | PinType::P13
         )
+    }
+
+    /// Get channel number for Pwm pin `PinType::P0-P13`
+    pub fn pwm_channel(&self) -> u8 {
+        match self {
+            PinType::P0 => 0,
+            PinType::P1 => 1,
+            PinType::P2 => 2,
+            PinType::P3 => 3,
+            PinType::P4 => 4,
+            PinType::P5 => 5,
+            PinType::P6 => 6,
+            PinType::P7 => 7,
+            PinType::P8 => 8,
+            PinType::P9 => 9,
+            PinType::P10 => 10,
+            PinType::P11 => 11,
+            PinType::P12 => 12,
+            PinType::P13 => 13,
+            _ => panic!(
+                "pin should be one of PinType::P0-P13, but passed {:?}",
+                self
+            ),
+        }
     }
 }
 
