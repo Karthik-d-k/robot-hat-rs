@@ -25,3 +25,8 @@ pub fn init_i2c() -> Result<I2c> {
 
     Ok(i2c)
 }
+
+/// Map value from one range (`from_range`) to another range (`to_range`)
+pub fn map_range(value: f32, from_range: (f32, f32), to_range: (f32, f32)) -> f32 {
+    to_range.0 + (value - from_range.0) * (to_range.1 - to_range.0) / (from_range.1 - from_range.0)
+}
