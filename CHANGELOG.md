@@ -6,6 +6,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.2](https://github.com/Karthik-d-k/robot-hat-rs/compare/v0.0.1...v0.0.2) - 2023-11-19
+
+### Other
+- add motors support
+- add servo support
+- add constraints
+- add pwm support
+- add pwm pins
+- add minimal justfile
+- allow only digital pins for ultrasonic sensor creation
+
 ## [0.0.1](https://github.com/Karthik-d-k/robot-hat-rs/releases/tag/v0.0.1) - 2023-11-17
 
 ### Other
