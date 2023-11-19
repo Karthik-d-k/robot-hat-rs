@@ -1,6 +1,6 @@
 //! PWM Module
 
-use anyhow::{Context, Result};
+use anyhow::{bail, Context, Result};
 use rppal::i2c::I2c;
 
 use crate::{pin::PinType, utils::init_i2c};
@@ -34,6 +34,7 @@ impl PWM {
     }
 
     /// Set the frequency of the pwm channel
+    /// range --> (0 - 65535)Hz
     pub fn freq(&mut self, freq: u16) -> Result<()> {
         /*  Buggy code: For now, we hardcode the values
                 let mut result_psc = Vec::with_capacity(12); // Create a vector for prescaler
@@ -66,6 +67,7 @@ impl PWM {
     }
 
     /// Set the prescaler for the pwm channel
+    /// range --> (0 - 65535)
     pub fn prescaler(&mut self, prescaler: u16) -> Result<()> {
         let timer = self.channel / 4_u8;
         let reg = REG_PSC + timer;
@@ -77,6 +79,7 @@ impl PWM {
     }
 
     /// Set the period for the pwm channel
+    /// range --> (0 - 65535)
     pub fn period(&mut self, per: u16) -> Result<()> {
         let timer = self.channel / 4_u8;
         let reg = REG_PER + timer;
@@ -89,6 +92,7 @@ impl PWM {
     }
 
     /// Set the pulse width for the pwm channel
+    /// range --> (0 - 65535)
     pub fn pulse_width(&mut self, pw: u16) -> Result<()> {
         let reg = REG_PW + self.channel;
         self.bus
@@ -99,10 +103,17 @@ impl PWM {
     }
 
     /// Set the pulse width percentage for the pwm channel
-    pub fn pulse_width_percent(&mut self, pulse_width_percent: u32) -> Result<()> {
+    /// range --> (0 - 100)%
+    pub fn pulse_width_percent(&mut self, pulse_width_percent: u8) -> Result<()> {
         // Buggy code ? !!
+        if !(0..=100).contains(&pulse_width_percent) {
+            bail!(
+                "pulse width percentage value should be between 0-100, but passed {}",
+                pulse_width_percent
+            )
+        }
         let timer = self.channel / 4_u8;
-        let pulse_width = ((self.period[timer as usize] as u32 * pulse_width_percent) / 100) as u16;
+        let pulse_width = (self.period[timer as usize] * pulse_width_percent as u16) / 100;
         self.pulse_width(pulse_width)?;
 
         Ok(())
