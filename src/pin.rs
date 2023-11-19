@@ -224,6 +224,8 @@ impl PinType {
 pub struct RHPin {
     /// A [`gpio::Pin`] from [`rppal`] crate
     pub gpio_pin: gpio::Pin,
+    /// BCM number of the Pin
+    pub bcm_num: u8,
 }
 
 impl RHPin {
@@ -233,6 +235,6 @@ impl RHPin {
         let bcm_num = pin_type.bcm_num(board_type);
         let gpio_pin = Gpio::new()?.get(bcm_num)?;
 
-        Ok(Self { gpio_pin })
+        Ok(Self { gpio_pin, bcm_num })
     }
 }
