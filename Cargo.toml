@@ -1,6 +1,6 @@
 [package]
 name = "robot-hat-rs"
-version = "0.0.2"
+version = "0.0.3"
 edition = "2021"
 authors = ["Karthik D K <karthikdk1998@gmail.com>"]
 categories = ["embedded"]
