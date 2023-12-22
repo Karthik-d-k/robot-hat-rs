@@ -48,6 +48,22 @@ pub enum PinType {
     D15,
     /// The Digital pin 16
     D16,
+    /// The Analog pin 0
+    A0,
+    /// The Analog pin 1
+    A1,
+    /// The Analog pin 2
+    A2,
+    /// The Analog pin 3
+    A3,
+    /// The Analog pin 4
+    A4,
+    /// The Analog pin 5
+    A5,
+    /// The Analog pin 6
+    A6,
+    /// The Analog pin 7
+    A7,
     /// The Pwm pin 0
     P0,
     /// The Pwm pin 1
@@ -173,6 +189,23 @@ impl PinType {
                 | PinType::D16
         )
     }
+
+    /// checks if `PinType` is a Analog Pin
+    pub fn is_adc_pin(&self) -> bool {
+        matches!(
+            self,
+            PinType::D0
+                | PinType::A0
+                | PinType::A1
+                | PinType::A2
+                | PinType::A3
+                | PinType::A4
+                | PinType::A5
+                | PinType::A6
+                | PinType::A7
+        )
+    }
+
     /// checks if `PinType` is a Pwm pin
     pub fn is_pwm_pin(&self) -> bool {
         matches!(
@@ -192,6 +225,21 @@ impl PinType {
                 | PinType::P12
                 | PinType::P13
         )
+    }
+
+    /// Get channel number for ADC pin `PinType::A0-A7`
+    pub fn adc_channel(&self) -> u8 {
+        match self {
+            PinType::A0 => 0,
+            PinType::A1 => 1,
+            PinType::A2 => 2,
+            PinType::A3 => 3,
+            PinType::A4 => 4,
+            PinType::A5 => 5,
+            PinType::A6 => 6,
+            PinType::A7 => 7,
+            _ => panic!("pin should be one of PinType::A0-P7, but passed {:?}", self),
+        }
     }
 
     /// Get channel number for Pwm pin `PinType::P0-P13`

@@ -6,3 +6,4 @@ pub mod pin;
 pub mod pwm;
 pub mod servo;
 pub mod utils;
+pub mod adc;
