@@ -1,9 +1,10 @@
 //! The unofficial Rust implementation of [robot-hat Python](https://github.com/sunfounder/robot-hat) Library.
 
+pub mod adc;
 pub mod depth;
+pub mod grayscale;
 pub mod motor;
 pub mod pin;
 pub mod pwm;
 pub mod servo;
 pub mod utils;
-pub mod adc;

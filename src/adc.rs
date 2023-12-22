@@ -6,6 +6,7 @@ use rppal::i2c::I2c;
 use crate::{pin::PinType, utils::init_i2c};
 
 /// A robot-hat ADC
+#[derive(Debug)]
 pub struct ADC {
     reg: u8,
     bus: I2c,
