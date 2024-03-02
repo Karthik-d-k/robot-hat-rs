@@ -13,12 +13,12 @@ Different modules for feature parity with python library.
 - [x] Motor
 - [x] Ultrasonic
 - [x] Grayscale
-- [] TTS
-- [] Music
-- [] ADXL435
-- [] RGB_LED
-- [] Buzzer
-- [] Robot
+- [ ] TTS
+- [ ] Music
+- [ ] ADXL435
+- [ ] RGB_LED
+- [ ] Buzzer
+- [ ] Robot
 
 
 #### License
