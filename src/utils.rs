@@ -11,7 +11,7 @@ const SLAVE_ADDR: u16 = 0x14;
 /// Initialize robot-hat I2C
 pub fn init_i2c() -> Result<I2c> {
     let mut i2c = I2c::with_bus(I2C_BUS).context("Constructing new I2C failed")?;
-    // wait after I2C init to avopid 121 IO error
+    // wait after I2C init to avoid 121 IO error
     sleep(Duration::from_secs(1));
 
     i2c.set_slave_address(SLAVE_ADDR)
