@@ -12,8 +12,8 @@ license = "MIT OR Apache-2.0"
 repository = "https://github.com/Karthik-d-k/robot-hat-rs"
 
 [dependencies]
-anyhow = "1.*"
-rppal = "0.15.*"
+anyhow = "*"
+rppal = "*"
 
 [profile.dev]
 opt-level = 1
